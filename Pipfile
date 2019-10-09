@@ -8,8 +8,6 @@ pytest = "*"
 
 [packages]
 psycopg2-binary = "*"
-pandas = "*"
-sqlalchemy = "*"
 testing-postgresql = "*"
 
 [requires]

@@ -33,9 +33,9 @@ class TestPostgresConnector(unittest.TestCase):
             with self.assertLogs() as log_watcher:
                 bad_pg_connection.open_connection()
 
-            assert log_watcher.records[0].msg == 'Failed to open connection to postgres --> ' \
-                                                 'FATAL:  role "bad_user" does not exist'
-            assert log_watcher.records[0].levelname == 'ERROR'
+        assert log_watcher.records[0].msg == 'Failed to open connection to postgres -->' \
+                                             ' FATAL:  role "bad_user" does not exist\n'
+        assert log_watcher.records[0].levelname == 'ERROR'
 
     def test_close_connection_successful(self):
         good_pg_connection = self.pg_connector.open_connection()
