@@ -5,10 +5,12 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "*"
+requests-mock = "*"
+testing-postgresql = "*"
 
 [packages]
 psycopg2-binary = "*"
-testing-postgresql = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

@@ -26,6 +26,7 @@ def get_requirements_from_pipfile_lock(path_to_pipfile_lock: str = None,
 
     if not path_to_pipfile_lock:  # then just assume setup.py is in the same directory as Pipfile.lock
         path_to_pipfile_lock = get_path_to_pipfile_lock()
+
     try:
         with open(path_to_pipfile_lock, 'r') as pipfile_lock:
             pipfile_lock_as_dict = json.load(pipfile_lock)
