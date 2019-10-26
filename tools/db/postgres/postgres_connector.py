@@ -6,8 +6,11 @@ import psycopg2.extensions
 
 class PostgresConnector:
 
-    def __init__(self, db_name: str, port: int = 5432, host: str = 'localhost', user: str = '', password: str = '') \
-            -> None:
+    def __init__(self, db_name: str,
+                 port: int = 5432,
+                 host: str = 'localhost',
+                 user: str = '',
+                 password: str = '') -> None:
         self.db_name = db_name
         self.port = port
         self.host = host
@@ -23,7 +26,12 @@ class PostgresConnector:
         self.close_connection(self.connection)
 
     def open_connection(self) -> psycopg2.extensions.connection:
-        # use in a with statement if method being called in isolation to ensure connection closes
+        """
+        Function to open a postgres connection from the class variables. To be used in a with statement if being called
+        in isolation to ensure the connection closes after transaction complete - or to be called in the __enter__
+        of this class.
+        :return: A psycopg2 open connection object
+        """
         logging.debug("Opening a postgres connection.")
         try:
             return psycopg2.connect(dbname=self.db_name,
@@ -36,6 +44,11 @@ class PostgresConnector:
             raise ConnectionError
 
     def close_connection(self, connection: psycopg2.extensions.connection) -> None:
+        """
+        Function to manually close a given psycopg2 connection.
+        :param connection: An open connection to be closed.
+        :return: None
+        """
         if connection:
             connection.close()
             logging.info(f'Connection terminated to postgres database --> {self.db_name}.')
