@@ -13,7 +13,7 @@ class APICaller:
     def retry_on_timeouts(self, function_to_retry: Callable, response_timeout: float = 5.0, max_retries: int = 3,
                           **kwargs) -> requests.Response:
         """
-        Function to that tries and retries call to a given function a given number of times if that call returns a
+        Function that tries and retries a call to a given function a given number of times if that call returns a
         timeout error. Designed to be used with http request functions within this class, and to specify the time to wait
         for response before cancelling and trying again, to prevent hanging API calls.
         :param function_to_retry: The function to retry on timeout.

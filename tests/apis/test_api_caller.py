@@ -1,6 +1,5 @@
 import json
 import unittest
-from time import sleep
 
 import requests
 import requests_mock
